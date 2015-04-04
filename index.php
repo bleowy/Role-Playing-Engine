@@ -22,8 +22,8 @@
                 </form>
             </div>
         </div>
-    </body>
-    <div id="footer">
-        Engine Created by <a href="http://www.github.com/bleowy">Bleowy</a>.Check code at <a href="http://www.github.com">Github</a>
+        <div id="footer">
+        Engine Created by <a href="http://www.github.com/bleowy">Bleowy</a>.Check code at <a href="http://www.github.com/bleowy/Role-Playing-Engine">Github</a>
     </div>
+    </body>
 </html>

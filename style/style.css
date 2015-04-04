@@ -46,6 +46,12 @@ font-style: oblique;
 top:15%;
 }
 
+#footer{
+position: fixed;
+bottom: 0;
+left:50%;
+margin-left: -158px;
+}
 
 a:link, a:visited{
     color:grey;
