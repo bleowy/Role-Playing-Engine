@@ -19,10 +19,12 @@ public function userVariables($id)
     $this -> user_gender = $user_fetch -> user_gender;
     $this -> user_login = $user_fetch -> user_login;
     $this -> user_city = $user_fetch -> user_city;
+    $this -> user_class = $user_fetch -> user_class;
     $this -> user_str = $user_fetch_stats -> user_str;
     $this -> user_know = $user_fetch_stats -> user_know;
     $this -> user_charisma = $user_fetch_stats -> user_charisma;
     $this -> user_dex = $user_fetch_stats -> user_dex;
+    
 }
  
 public function cityVariables($city_id)
