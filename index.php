@@ -18,11 +18,11 @@
                 <input type="text" name="login">
 				Password:
 				<input type="password" name="password" >
-				<input type="submit" value="Login">
+				<input type="submit" value="Login" name="submit">
                 </form>
             </div>
         </div>
-        <div id="footer">
+    <div id="footer">
         Engine Created by <a href="http://www.github.com/bleowy">Bleowy</a>.Check code at <a href="http://www.github.com/bleowy/Role-Playing-Engine">Github</a>
     </div>
     </body>
