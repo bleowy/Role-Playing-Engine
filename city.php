@@ -1,4 +1,5 @@
-<?php
+<?php 
+
 //Check if session exist which means "its there somebody?"
 session_start();
 if(!isset($_SESSION['id']))
@@ -9,13 +10,16 @@ if(!isset($_SESSION['id']))
 //
 require_once('./assets/variables.php');
 require_once('./assets/welcome_class.php');
+require_once('./assets/city_class.php');
 $variables = new Variables();
 $variables -> GeneralVariables();
 $userVariables = new Variables();
 $userVariables -> userVariables($_SESSION['id']);
 $cityVariables = new Variables();
 $cityVariables -> cityVariables(($userVariables -> user_city));
-$welcome  = new Welcome(($cityVariables -> city_name),($cityVariables -> city_weather));
+$cityClass = new merchantsExist(($userVariables -> user_city));
+
+
 
 //
 require_once('./assets/menu.php');
@@ -44,7 +48,18 @@ $menu = new menu(($_SESSION['id']),($userVariables -> user_city));
         </div>
         <div class="center_side">
             <div id="text">
-                <?php $welcome -> generateMessage(); ?>
+                <?php echo $cityVariables -> city_text;
+                    $cityClass -> checkWeapons();
+                    if(($cityClass -> existWeapons) == true)
+                    {
+                        echo '<br><a href="/weaponMerchant.php">Brońmistrz</a>';
+                    } 
+                    $cityClass -> checkArmors();
+                    if(($cityClass -> existArmors) == true)
+                    {
+                        echo '<br><a href="/weaponArmors.php">Zbrojmistrz</a>';
+                    }
+                ?>
             </div>
         </div>
         <div class="right_side">

@@ -1,5 +1,5 @@
 body{
-background-color: ghostwhite;
+background-color: #203132;
 padding: 0;
 margin: 0;
 }
@@ -9,41 +9,64 @@ width: 100%;
 text-align: center;
 font-size: 50px;
 font-family: arial;
-background-color: white;
--moz-box-shadow: 3px 3px 3px #888;
--webkit-box-shadow: 3px 3px 3px #888;
-box-shadow: 3px 3px 3px #888;
+height: 103px;
+background-color: #233231;
+-moz-box-shadow: 3px 3px 3px #000000;
+-webkit-box-shadow: 3px 3px 3px #000000;
+box-shadow: 3px 3px 3px #000000;
+}
+
+#logoRepeat
+{
+background-image: url("/graphics/locations/logo.png");
+opacity: 0.1;
+position: absolute;
+z-index: 1;
+height: 100px;
+width: 100%;
+}
+
+#logo{
+position: relative;
+background-image: url("/graphics/locations/logo.png");
+height: 100px;
+background-repeat: no-repeat;
+left:50%;
+width: 1024px;
+margin-left: -512px;
+z-index: 2;
 }
 
 #right_menu{
 top:15%;
 width: 200px;
 position: absolute;
-background-color: white;
+background-color: #233231;
 float: right;
 right: 25%;
 margin-right: -100px;
--moz-box-shadow: 3px 3px 3px #888;
--webkit-box-shadow: 3px 3px 3px #888;
-box-shadow: 1px 3px 3px #888;
+-moz-box-shadow: 3px 3px 3px #000000;
+-webkit-box-shadow: 3px 3px 3px #000000;
+box-shadow: 1px 3px 3px #000000;
 text-align: center;
-color: gray;
+color: #ffffff;
 }
 
 
 #left_menu{
 width: 500px;
-background-color: white;
--moz-box-shadow: 3px 3px 3px #888;
--webkit-box-shadow: 3px 3px 3px #888;
-box-shadow: 1px 3px 3px #888;
+background-color: #233231;
+-moz-box-shadow: 3px 3px 3px #000000;
+-webkit-box-shadow: 3px 3px 3px #000000;
+box-shadow: 1px 3px 3px #000000;
 position: absolute;
 left:25%;
 margin-left: -200px;
 text-align: center;
-color: grey;
+color: #ffffff;
 font-style: oblique;
 top:15%;
+line-height:18px;
 }
 
 #footer{

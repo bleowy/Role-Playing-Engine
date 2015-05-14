@@ -1,4 +1,4 @@
-<?php
+<?php 
 //Check if session exist which means "its there somebody?"
 session_start();
 if(!isset($_SESSION['id']))
@@ -9,13 +9,16 @@ if(!isset($_SESSION['id']))
 //
 require_once('./assets/variables.php');
 require_once('./assets/welcome_class.php');
+require_once('./assets/city_class.php');
+require_once('./assets/equipment_class.php');
 $variables = new Variables();
 $variables -> GeneralVariables();
 $userVariables = new Variables();
 $userVariables -> userVariables($_SESSION['id']);
 $cityVariables = new Variables();
 $cityVariables -> cityVariables(($userVariables -> user_city));
-$welcome  = new Welcome(($cityVariables -> city_name),($cityVariables -> city_weather));
+$equipment = new Show($_SESSION['id']);
+
 
 //
 require_once('./assets/menu.php');
@@ -24,7 +27,7 @@ $menu = new menu(($_SESSION['id']),($userVariables -> user_city));
 ?>
 <title><?php echo $variables -> _title ?></title>
 <link rel="stylesheet" href="style/ingame.css"/>
-
+<link rel="stylesheet" href="style/tooltip.css"/>
 <html>
     
     <head>
@@ -44,12 +47,17 @@ $menu = new menu(($_SESSION['id']),($userVariables -> user_city));
         </div>
         <div class="center_side">
             <div id="text">
-                <?php $welcome -> generateMessage(); ?>
+                <div id="show_equip">
+                    <?php $equipment -> showEquipment();?>
+                </div>
+                <div id="show_items">
+                    <?php $equipment -> showItems();?> 
+                </div>
             </div>
         </div>
         <div class="right_side">
             <div id="right_top_side">              
-                <?php 
+                <?php
                 $menu -> showRightMenu();
                 ?>
             </div>

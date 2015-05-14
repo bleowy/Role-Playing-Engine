@@ -12,14 +12,23 @@ class login
     
     public function login()
     {
-        include_once('/assets/connect.php');
+        include('./assets/connect.php');
         //
-        global $pdo;
         $login = $this -> _login;
         $password = $this -> _password;
         $login_query = $pdo -> query("SELECT id FROM users_accounts WHERE user_login = '$login' AND user_password = '$password'");
         $login_r = $login_query -> fetch(PDO::FETCH_OBJ);
         $this -> _id = $login_r -> id;
+    }
+
+    public function updateLastLogin()
+    {
+        include('./assets/connect.php');
+        $this -> time = date("Y-m-d H:i:s");
+        $update = $pdo -> prepare("UPDATE users_accounts SET user_lastlogin = :time WHERE id = :id");
+        $update -> bindValue(':time',$this -> time,PDO::PARAM_INT);
+        $update -> bindValue(':id',$this -> _id,PDO::PARAM_INT);
+        $update -> execute();
     }
 }
 
@@ -82,6 +91,7 @@ class login_check extends login
     {
         if(!empty($this -> _id))
         {
+         self::updateLastLogin();
          session_start();
          $_SESSION['id'] = $this -> _id;
          header("Location: /welcome.php");

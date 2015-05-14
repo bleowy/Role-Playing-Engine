@@ -1,4 +1,5 @@
-<?php
+<?php 
+
 //Check if session exist which means "its there somebody?"
 session_start();
 if(!isset($_SESSION['id']))
@@ -8,15 +9,17 @@ if(!isset($_SESSION['id']))
 }
 //
 require_once('./assets/variables.php');
-require_once('./assets/welcome_class.php');
+require_once('./assets/city_class.php');
+require_once('./assets/expedition.php');
 $variables = new Variables();
 $variables -> GeneralVariables();
 $userVariables = new Variables();
 $userVariables -> userVariables($_SESSION['id']);
 $cityVariables = new Variables();
 $cityVariables -> cityVariables(($userVariables -> user_city));
-$welcome  = new Welcome(($cityVariables -> city_name),($cityVariables -> city_weather));
-
+$gameExpedition = new showExpeditions(($_SESSION['id']));
+$checkExpedition = new endExpeditions(($_SESSION['id']));
+$checkExpedition -> checkTime();
 //
 require_once('./assets/menu.php');
 $menu = new menu(($_SESSION['id']),($userVariables -> user_city));
@@ -44,7 +47,13 @@ $menu = new menu(($_SESSION['id']),($userVariables -> user_city));
         </div>
         <div class="center_side">
             <div id="text">
-                <?php $welcome -> generateMessage(); ?>
+                <?php
+                ?>
+            	You looked slightly on your map and those places are the most relevant to explore.
+            	<br>
+                <?php
+                	$gameExpedition -> Show(($checkExpedition -> Busy));
+                ?>
             </div>
         </div>
         <div class="right_side">

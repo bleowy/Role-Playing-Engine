@@ -1,4 +1,5 @@
-<?php
+<?php 
+
 //Check if session exist which means "its there somebody?"
 session_start();
 if(!isset($_SESSION['id']))
@@ -9,14 +10,15 @@ if(!isset($_SESSION['id']))
 //
 require_once('./assets/variables.php');
 require_once('./assets/welcome_class.php');
+require_once('./assets/city_class.php');
 $variables = new Variables();
 $variables -> GeneralVariables();
 $userVariables = new Variables();
 $userVariables -> userVariables($_SESSION['id']);
 $cityVariables = new Variables();
 $cityVariables -> cityVariables(($userVariables -> user_city));
-$welcome  = new Welcome(($cityVariables -> city_name),($cityVariables -> city_weather));
-
+$cityClass = new merchantsExist(($userVariables -> user_city));
+$cityMerchants = new Merchants();
 //
 require_once('./assets/menu.php');
 $menu = new menu(($_SESSION['id']),($userVariables -> user_city));
@@ -44,8 +46,17 @@ $menu = new menu(($_SESSION['id']),($userVariables -> user_city));
         </div>
         <div class="center_side">
             <div id="text">
-                <?php $welcome -> generateMessage(); ?>
+                <?php 
+                    $cityMerchants -> weaponMerchant();
+                ?>
             </div>
+            <div id="buy_list" style="float:left;margin-top:25px;margin-left:5%;background-color:#E9E9E9;width:200px;">
+                    <b>Buy:</b>
+                    <?php
+                    $cityMerchants -> showItemList(1);
+                    ?>
+                    <br>
+                </div>
         </div>
         <div class="right_side">
             <div id="right_top_side">              

@@ -120,3 +120,17 @@ bottom: 0;
 left:50%;
 margin-left: -158px;
 }
+
+#show_equip
+{
+	position: relative;
+	float:left;
+	margin-left: 25px;
+}
+
+#show_items
+{
+	position: relative;
+	float: right;
+	margin-right: 150px;
+}
